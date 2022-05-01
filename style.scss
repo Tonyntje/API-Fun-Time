@@ -50,6 +50,9 @@ button.loading {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(359deg); }
 }
+#store-images {
+    display:none;
+}
 #pokecontainer {
     background:rgba(255,255,255,0.8);
     min-height: 300px;
@@ -57,4 +60,48 @@ button.loading {
     border-radius: 10px;
     margin: 0 auto 30px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    img {
+        width: 77%;
+        margin: 0 auto !important;
+        display: block;
+    }
+    img.random {
+        filter: brightness(0);
+    }
+    h3 {
+        text-align: center;
+        margin-top: -30px;
+        font-size: 40px;
+    }
+    .stats {
+        display:flex;
+        max-width: 50%;
+        margin: 10px auto 30px;
+        justify-content: space-between;
+        .hp {
+            font-family: fontAwesome;
+            &:before {
+                content: "\f004";
+                color: red;
+                margin-right: 5px;
+            }
+        }
+        .attack {
+            font-family: fontAwesome;
+            &:before {
+                content: "\f185";
+                color: blue;
+                margin-right: 5px;
+            }
+        }
+        .defense {
+            font-family: fontAwesome;
+            &:before {
+                content: "\f132";
+                color: green;
+                margin-right: 5px;
+            }
+        }
+    }
 }

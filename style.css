@@ -78,6 +78,10 @@ button.loading:after {
   }
 }
 
+#store-images {
+  display: none;
+}
+
 #pokecontainer {
   background: rgba(255, 255, 255, 0.8);
   min-height: 300px;
@@ -86,5 +90,64 @@ button.loading:after {
   margin: 0 auto 30px;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#pokecontainer img {
+  width: 77%;
+  margin: 0 auto !important;
+  display: block;
+}
+
+#pokecontainer img.random {
+  -webkit-filter: brightness(0);
+          filter: brightness(0);
+}
+
+#pokecontainer h3 {
+  text-align: center;
+  margin-top: -30px;
+  font-size: 40px;
+}
+
+#pokecontainer .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 50%;
+  margin: 10px auto 30px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#pokecontainer .stats .hp {
+  font-family: fontAwesome;
+}
+
+#pokecontainer .stats .hp:before {
+  content: "\f004";
+  color: red;
+  margin-right: 5px;
+}
+
+#pokecontainer .stats .attack {
+  font-family: fontAwesome;
+}
+
+#pokecontainer .stats .attack:before {
+  content: "\f185";
+  color: blue;
+  margin-right: 5px;
+}
+
+#pokecontainer .stats .defense {
+  font-family: fontAwesome;
+}
+
+#pokecontainer .stats .defense:before {
+  content: "\f132";
+  color: green;
+  margin-right: 5px;
 }
 /*# sourceMappingURL=style.css.map */

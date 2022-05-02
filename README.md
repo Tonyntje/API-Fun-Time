@@ -4,4 +4,4 @@ Made a more sophisticaded nested Promises that await for each data fetch. After 
 
 Keyfocus points:
 - Writing a fetch properly without fault.
-- Experiment more with then and what's capable with the method.
+- Experiment more with then and what's capable with the method. (https://www.youtube.com/watch?v=vn3tm0quoqE)

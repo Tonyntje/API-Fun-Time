@@ -3,7 +3,7 @@
 const allPokemons = [];
 // Promise function to get the first 151 "classic pokemon".
 async function getPokeDetails() {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0", {method: "GET"})
+    await fetch("https://pokeapi.co/api/v2/pokemon?limit=386&offset=0", {method: "GET"})
         .then(respons => respons.json())
         .then(results => results.results)
         .then(pokemon => {
@@ -22,7 +22,7 @@ async function getDetails(pokemonUrl) {
             .push( 
                 { 
                 name:       res.name, 
-                image:      res.sprites.front_default, 
+                image:      (Math.floor(Math.Random() * 2)) ? res.sprites.front_default : res.sprites.front_shiny, 
                 hp:         res.stats[0].base_stat, 
                 attack:     res.stats[1].base_stat, 
                 defense:    res.stats[2].base_stat
@@ -50,7 +50,7 @@ const whoIsMyPokemon = () => {
     const amount = 20;
     for(let c = 0; c < amount; c++) {
         setTimeout(() => {
-            const pokemon = allPokemons[Math.round(Math.random() * 151)]
+            const pokemon = allPokemons[Math.round(Math.random() * 905)]
             container.innerHTML = `
             <img class="random" src="${pokemon.image}">
             <h3>${pokemon.name}</h3>
@@ -66,18 +66,3 @@ const whoIsMyPokemon = () => {
         last.classList.remove('random')
     }, 100*amount)
 }
-
-
-// const fetchPokemonDetails = url => {
-//     return new Promise((resolve, reject) => {
-//         try {
-//             resolve());
-//         } catch(err) {
-//             reject(err);
-//         }
-//     })
-// }
-// async function sortPokemons (pokemonList) {
-    
-
-// }

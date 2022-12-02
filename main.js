@@ -15,6 +15,8 @@ async function getPokeDetails() {
 
 // Had to make another await, but this can't be initialized in .then(). Called on line 13.
 async function getDetails(pokemonUrl) {
+    const ShinyRandomizer = Math.floor(Math.random() * 10)
+
     await fetch(pokemonUrl, {method: "GET"})
     .then(respons => respons.json())
     .then(res => { allPokemons
@@ -22,16 +24,20 @@ async function getDetails(pokemonUrl) {
             .push( 
                 { 
                 name:       res.name, 
-                image:      (Math.floor(Math.Random() * 2)) ? res.sprites.front_default : res.sprites.front_shiny, 
+                image:      (ShinyRandomizer) ? res.sprites.front_shiny : res.sprites.front_default, 
                 hp:         res.stats[0].base_stat, 
                 attack:     res.stats[1].base_stat, 
-                defense:    res.stats[2].base_stat
+                defense:    res.stats[2].base_stat,
+                shiny:      (ShinyRandomizer) ? true : false, 
                 }
             )
             const hidden = document.getElementById('store-images')
             const temp = document.createElement('img')
-            temp.src = res.sprites.front_default, 
+            const shinytemp = document.createElement('img')
+            temp.src = res.sprites.front_default
+            shinytemp.src = res.sprites.front_shiny
             hidden.append(temp)
+            hidden.append(shinytemp)
         }
     )
     .then(() => {
@@ -50,14 +56,19 @@ const whoIsMyPokemon = () => {
     const amount = 20;
     for(let c = 0; c < amount; c++) {
         setTimeout(() => {
-            const pokemon = allPokemons[Math.round(Math.random() * 905)]
+            const pokemon = allPokemons[Math.round(Math.random() * 386)]
+            
+
             container.innerHTML = `
-            <img class="random" src="${pokemon.image}">
-            <h3>${pokemon.name}</h3>
-            <div class="stats">
-                <div class="hp">${pokemon.hp}</div>
-                <div class="attack">${pokemon.attack}</div>
-                <div class="defense">${pokemon.defense}</div>
+            <div class="random">
+                <img src="${pokemon.image}">
+                <h3>${pokemon.name}</h3>
+                <div class="stats">
+                    <div class="hp">${pokemon.hp}</div>
+                    <div class="attack">${pokemon.attack}</div>
+                    <div class="defense">${pokemon.defense}</div>
+                    ${(pokemon.shiny) ? '<div class="shiny"><div class="shinymate"></div><div class="shinybro"></div></div>' : ''}
+                </div>
             </div>`
         }, 100*c);
     }
